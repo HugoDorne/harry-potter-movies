@@ -1,7 +1,6 @@
 import { MoviesService } from './../../services/movies.service';
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { debounceTime } from 'rxjs';
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
@@ -52,7 +51,7 @@ export class MoviesComponent {
     });
   }
 
-  private filterMovies() {
+  public filterMovies() {
     this.filteredMovies = this.movies.filter((movie) => {
       return (
         (this.title.value ? movie.title.toLowerCase().includes(this.title.value.toLowerCase()) : true) &&

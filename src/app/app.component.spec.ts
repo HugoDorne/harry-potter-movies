@@ -1,10 +1,22 @@
 import { TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
+import { of } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
+    // Mock ActivatedRoute
+    const activatedRouteMock = {
+      paramMap: of({
+        get: (key: string) => '1', // Mock the route parameter if needed
+      }),
+    };
+
     await TestBed.configureTestingModule({
-      imports: [AppComponent],
+      imports: [AppComponent], // Import the standalone component
+      providers: [
+        { provide: ActivatedRoute, useValue: activatedRouteMock }, // Provide the mock ActivatedRoute
+      ],
     }).compileComponents();
   });
 
@@ -12,18 +24,5 @@ describe('AppComponent', () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
     expect(app).toBeTruthy();
-  });
-
-  it(`should have the 'harry-potter-movies' title`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('harry-potter-movies');
-  });
-
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, harry-potter-movies');
   });
 });

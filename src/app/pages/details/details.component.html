@@ -1,1 +1,45 @@
-<p>details works!</p>
+<mat-card class="w-1/2 m-4 mx-auto">
+  <!-- Header Section -->
+  <mat-card-header class="flex items-center mb-4">
+    <a [routerLink]="['/']" routerLinkActive="router-link-active">
+      <mat-icon>arrow_back</mat-icon>
+    </a>
+    <h1 class="text-xl font-bold ps-4">{{ movie?.title }}</h1>
+  </mat-card-header>
+
+  <mat-card-content>
+    <!-- Poster and Summary Section -->
+    <div class="flex items-center mb-4 gap-4">
+      <img [src]="movie?.poster" [alt]="`Movie poster for ${movie?.title}`" class="w-50 h-auto mb-4" />
+      <p><b>Summary: </b> {{ movie?.summary }}</p>
+    </div>
+
+    <!-- Details Section -->
+    <div>
+      <table class="mat-elevation-z8 w-full border-collapse border border-gray-300 bg-gray-100">
+        <tbody>
+          <tr>
+            <td class="px-4 py-2 border border-gray-300 bg-gray-200 font-bold">Box Office</td>
+            <td class="px-4 py-2 border border-gray-300">{{ movie?.box_office | customCurrency }}</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-2 border border-gray-300 bg-gray-200 font-bold">Budget</td>
+            <td class="px-4 py-2 border border-gray-300">{{ movie?.budget | customCurrency }}</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-2 border border-gray-300 bg-gray-200 font-bold">Duration</td>
+            <td class="px-4 py-2 border border-gray-300">{{ movie?.duration | duration }}</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-2 border border-gray-300 bg-gray-200 font-bold">Producers</td>
+            <td class="px-4 py-2 border border-gray-300">{{ movie?.producers?.join(", ") }}</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-2 border border-gray-300 bg-gray-200 font-bold">Cinematographers</td>
+            <td class="px-4 py-2 border border-gray-300">{{ movie?.cinematographers?.join(", ") }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </mat-card-content>
+</mat-card>

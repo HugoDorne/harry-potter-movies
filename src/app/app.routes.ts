@@ -6,7 +6,7 @@ export const ROUTES: Routes = [
     loadComponent: () => import('./pages/movies/movies.component').then((m) => m.MoviesComponent),
   },
   {
-    path: 'details/:id',
+    path: 'details/:movieId',
     loadComponent: () => import('./pages/details/details.component').then((m) => m.DetailsComponent),
   },
   {
