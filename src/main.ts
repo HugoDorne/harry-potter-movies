@@ -1,5 +1,5 @@
 import { bootstrapApplication } from '@angular/platform-browser';
-import { appConfig } from './app/app.config';
+import { APP_CONFIG } from './app/app.config';
 import { AppComponent } from './app/app.component';
 import {setupWorker} from 'msw/browser';
 import {http, HttpResponse} from 'msw';
@@ -218,5 +218,5 @@ const handlers = [
 ];
 
 setupWorker(...handlers).start()
-  .then(() => bootstrapApplication(AppComponent, appConfig))
+  .then(() => bootstrapApplication(AppComponent, APP_CONFIG))
   .catch((err) => console.error(err));
