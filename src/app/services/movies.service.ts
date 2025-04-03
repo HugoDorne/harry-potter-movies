@@ -12,10 +12,10 @@ export class MoviesService {
   constructor(private readonly http: HttpClient) { }
 
   fetchMovies(): Observable<Movie[]> {
-    return this.http.get<Movie[]>('http://localhost:4200/movies');
+    return this.http.get<Movie[]>(`${location.origin}/movies`);
   }
 
   fetchMovieFromId(id: string): Observable<MovieDetails> {
-    return this.http.get<MovieDetails>(`http://localhost:4200/movies/${id}`);
+    return this.http.get<MovieDetails>(`${location.origin}/movies/${id}`);
   }
 }
